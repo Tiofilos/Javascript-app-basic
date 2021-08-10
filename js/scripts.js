@@ -1,7 +1,7 @@
 alert ('Hello world');
 
-let myName = 'Theo';
-document.write (myName);
+let favoriteFood = 'beans';
+document.write (favoriteFood);
 
 let size = 100;
 let doubleSize = size * 2;
