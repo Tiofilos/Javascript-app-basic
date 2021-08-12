@@ -1,17 +1,18 @@
-alert ('Hello world');
+let pokemonList = [
+    {name: 'Bulbasaur', height: 7, types:['grass', 'poison'] },
+    {name: 'Beedrill', height: 5, types:['bug', 'poison'] },
+    {name: 'Butterfree', height: 2, types:['bug', 'flying'] }
+];
 
-let favoriteFood = 'beans';
-document.write (favoriteFood);
-
-let size = 100;
-let doubleSize = size * 2;
-let minSize = (doubleSize * 2) - (size / 2);
-document.write(minSize);
-
-
-
-
-
+for (let i = 0; i < pokemonList.length; i++){
+    let pokemon = pokemonList[i].name + '(height: ' + pokemonList[i].height + ')';
+    if (pokemonList[i].height > 3){
+        document.write(pokemon + "- That's big! <br>");
+    }
+    else{
+        document.write(pokemon + '<br>');
+    }
+} 
 
 
 
