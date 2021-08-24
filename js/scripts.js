@@ -1,6 +1,6 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let searchInput = document.querySelector("#search-bar");
+
   // API link
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
@@ -15,13 +15,6 @@ let pokemonRepository = (function () {
   //returning pokemon list
   function getAll() {
     return pokemonList;
-  }
-
-  function remove(start, number) {
-    document.write(`<br><p>${pokedex[start].name}
-      </p><p> </p><br>`);
-
-    pokemonList.splice(start, number);
   }
   function addListItem(pokemon) {
     let list = document.querySelector(".pokemon-list");
@@ -87,8 +80,6 @@ let pokemonRepository = (function () {
   }
   //Modal
   function showModal(pokemon) {
-    console.log("showModal is running");
-
     let modalContent = document.querySelector(".modal-content");
 
     let modalHeader = document.querySelector(".modal-header");
@@ -113,8 +104,6 @@ let pokemonRepository = (function () {
     modalHeader.innerHTML = "";
     modalBody.innerHTML = "";
 
-    console.log(pokemon);
-
     //modal content
     modalHeader.appendChild(titleElement);
     modalBody.appendChild(contentElement);
@@ -129,6 +118,7 @@ let pokemonRepository = (function () {
   }
 
   //search bar
+  let searchInput = document.querySelector("#search-bar");
   searchInput.addEventListener("input", function () {
     let listPokemon = document.querySelectorAll("li");
     let value = searchInput.value.toUpperCase();
@@ -139,11 +129,10 @@ let pokemonRepository = (function () {
       }
     });
   });
-
+  //This returns all the functions created
   return {
     add: add,
     getAll: getAll,
-    remove: remove,
     addListItem: addListItem,
     loadList: loadList,
     loadDetils: loadDetails,
@@ -151,13 +140,14 @@ let pokemonRepository = (function () {
     showDetails: showDetails,
   };
 })();
-
+// This loads the data
 pokemonRepository.loadList().then(function () {
-  // data is being loaded!
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+//This creates the 'change color' icon in navbar
 function changeColor() {
   let body = document.querySelector("body");
   body.classList.toggle("change-color");
